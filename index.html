@@ -183,7 +183,7 @@
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 40px;
           max-width: 1200px;
-          margin: 0 auto;
+          margin: 0 auto 60px;
         }
 
         .project-card {
@@ -194,6 +194,24 @@
           transition: all 0.3s ease;
           cursor: pointer;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+          position: relative;
+        }
+
+        .project-tag {
+          position: absolute;
+          top: -12px;
+          left: 20px;
+          width: 40px;
+          height: 40px;
+          background: var(--ctp-red);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          color: white;
+          font-size: 18px;
+          box-shadow: 0 4px 15px rgba(237, 135, 150, 0.4);
         }
 
         .project-card:hover {
@@ -206,6 +224,7 @@
           color: var(--ctp-mauve);
           margin-bottom: 15px;
           font-size: 22px;
+          margin-top: 10px;
         }
 
         .project-card p {
@@ -216,7 +235,8 @@
 
         .project-links {
           display: flex;
-          gap: 15px;
+          gap: 10px;
+          flex-wrap: wrap;
         }
 
         .project-link {
@@ -229,10 +249,36 @@
           font-weight: bold;
           transition: all 0.3s ease;
           display: inline-block;
+          border: none;
+          cursor: pointer;
         }
 
         .project-link:hover {
           background: var(--ctp-pink);
+          transform: scale(1.05);
+        }
+
+        .more-details-btn {
+          text-align: center;
+          margin-top: 40px;
+        }
+
+        .more-details-btn a {
+          padding: 16px 50px;
+          background: transparent;
+          color: var(--ctp-mauve);
+          text-decoration: none;
+          border: 2px solid var(--ctp-mauve);
+          border-radius: 50px;
+          font-weight: bold;
+          font-size: 18px;
+          transition: all 0.3s ease;
+          display: inline-block;
+        }
+
+        .more-details-btn a:hover {
+          background: var(--ctp-mauve);
+          color: var(--ctp-base);
           transform: scale(1.05);
         }
 
@@ -243,6 +289,11 @@
           padding: 40px 20px;
           color: var(--ctp-subtext1);
           border-top: 2px solid var(--ctp-surface0);
+        }
+
+        footer h3 {
+          color: var(--ctp-mauve);
+          margin-bottom: 20px;
         }
 
         footer a {
@@ -313,14 +364,17 @@
     <section class="projects" id="projects">
         <h2>Featured Projects</h2>
         <div class="projects-grid" id="projects-grid"></div>
+        <div class="more-details-btn">
+            <a href="projects.html">More Details! →</a>
+        </div>
     </section>
 
     <footer id="contact">
-        <h3 style="margin-bottom: 20px;">Get in Touch</h3>
+        <h3>Get in Touch</h3>
         <div>
             <a href="https://github.com/sudo-apt-install-tap" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="mailto:your-email@example.com">Email</a>
+            <a href="mailto:work.tapishnud@gmail.com">Email</a>
+            <a href="slack://user?team=T0G9QKB9G&user=tap" target="_blank" rel="noopener noreferrer">Slack (@tap)</a>
         </div>
         <p style="margin-top: 30px;">© 2026 sudo-apt-install-tap. Built with React & Catppuccin Macchiato 💜</p>
     </footer>
@@ -339,37 +393,43 @@
                 title: 'Taps-Macropad-V3',
                 description: 'Advanced macropad with customizable keys and RGB lighting',
                 repo: 'https://github.com/sudo-apt-install-tap/Taps-Macropad-V3',
-                language: 'Python'
+                language: 'Python',
+                tag: 1
             },
             {
                 title: 'TaoTeChing',
                 description: 'An open-source split keyboard made for ergonomics with minimalist design',
                 repo: 'https://github.com/sudo-apt-install-tap/TaoTeChing',
-                language: 'Python'
+                language: 'Python',
+                tag: 2
             },
             {
                 title: 'ByteVile',
                 description: 'Development version with advanced features and optimizations',
                 repo: 'https://github.com/sudo-apt-install-tap/ByteVile-Alpha-Dev-Version-1.1',
-                language: 'Python'
+                language: 'Python',
+                tag: 3
             },
             {
                 title: 'RPForged',
                 description: 'A simple microcontroller with the RP2040 chip',
                 repo: 'https://github.com/sudo-apt-install-tap/RPForged',
-                language: 'Hardware'
+                language: 'Hardware',
+                tag: 4
             },
             {
                 title: 'BuildGuildKolkata',
                 description: 'Community project for builders and makers in Kolkata',
                 repo: 'https://github.com/sudo-apt-install-tap/BuildGuildKolkata',
-                language: 'CSS'
+                language: 'CSS',
+                tag: 5
             },
             {
                 title: 'MUSE',
                 description: 'Creative project combining music and electronics',
                 repo: 'https://github.com/sudo-apt-install-tap/MUSE',
-                language: 'Multi'
+                language: 'Multi',
+                tag: 6
             }
         ];
 
@@ -379,6 +439,7 @@
             const card = document.createElement('div');
             card.className = 'project-card';
             card.innerHTML = `
+                <div class="project-tag">${project.tag}</div>
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
                 <div style="margin-bottom: 15px;">
