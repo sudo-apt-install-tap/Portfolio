@@ -1,76 +1,105 @@
-<h2 align="center">
-  Portfolio Website - v2.0<br/>
-  <a href="https://soumyajit.vercel.app/" target="_blank">soumyajit.tech</a>
-</h2>
-<div align="center">
-  <img alt="Demo" src="./Images/readme-img1.png" />
-</div>
+# Portfolio Website
 
-<br/>
-
-<center>
-
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) &nbsp;
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) &nbsp;
-[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) &nbsp;
-![GitHub Repo stars](https://img.shields.io/github/stars/soumyajit4419/Portfolio?color=red&logo=github&style=for-the-badge) &nbsp;
-![GitHub forks](https://img.shields.io/github/forks/soumyajit4419/Portfolio?color=red&logo=github&style=for-the-badge)
-
-</center>
-
-<h3 align="center">
-    🔹
-    <a href="https://github.com/soumyajit4419/Portfolio/issues">Report Bug</a> &nbsp; &nbsp;
-    🔹
-    <a href="https://github.com/soumyajit4419/Portfolio/issues">Request Feature</a>
-</h3>
-
-## TL;DR
-
-You can fork this repo to modify and make changes of your own. Please give me proper credit by linking back to [Soumyajit4419](https://github.com/soumyajit4419/Portfolio). Thanks!
-
-## Built With
-
-My personal portfolio <a href="https://soumyajit.vercel.app/" target="_blank">soumyajit.tech</a> which features some of my github projects as well as my resume and technical skills.<br/>
-
-This project was built using these technologies.
-
-- React.js
-- Node.js
-- Express.js
-- CSS3
-- VsCode
-- Vercel
+> A beautiful portfolio website built with React.js and styled with the Catppuccin Macchiato color scheme
 
 ## Features
 
-**📖 Multi-Page Layout**
+✨ **Cat Cursor Animation** - A cute cat emoji (😺) follows your cursor around the page!
 
-**🎨 Styled with React-Bootstrap and Css with easy to customize colors**
+🎨 **Catppuccin Macchiato Theme** - Beautiful purple-based color scheme
 
-**📱 Fully Responsive**
+⚛️ **React.js** - Built with React for smooth interactions
+
+📱 **Responsive Design** - Looks great on desktop and mobile
+
+🚀 **Featured Projects** - Showcase your best work including:
+  - Taps-Macropad-V3
+  - TaoTeChing
+  - ByteVile
+  - RPForged
+  - BuildGuildKolkata
+  - MUSE
+
+## Tech Stack
+
+- **Frontend**: React 18
+- **Styling**: Pure CSS with Catppuccin Macchiato color scheme
+- **Build**: HTML5 + JSX
+
+## Colors Used
+
+The portfolio uses the Catppuccin Macchiato palette:
+- **Primary**: Mauve (#c6a0f6) - Main accent color
+- **Secondary**: Pink (#f5bde6) - Hover effects
+- **Background**: Base (#24273a) and Mantle (#1e2030)
+- **Text**: Cad1f5 - Main text color
 
 ## Getting Started
 
-Clone down this repository. You will need `node.js` and `git` installed globally on your machine.
+### Option 1: Direct Browser
+Simply open `index.html` in your web browser. The page uses CDN links for React and Babel, so no installation needed!
 
-## 🛠 Installation and Setup Instructions
+### Option 2: Local Server
+For development with hot reload:
 
-1. Installation: `npm install`
+```bash
+# Using Python 3
+python -m http.server 8000
 
-2. In the project directory, you can run: `npm start`
+# Using Node.js (if installed)
+npx http-server
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-The page will reload if you make edits.
+Then visit `http://localhost:8000`
 
-## Usage Instructions
+## File Structure
 
-Open the project folder and Navigate to `/src/components/`. <br/>
-You will find all the components used and you can edit your information accordingly.
+```
+.
+├── index.html      # Main HTML file
+├── styles.css      # All styling (Catppuccin themed)
+├── app.jsx         # React components
+└── README.md       # This file
+```
 
-### Show your support
+## Customization
 
-Give a ⭐ if you like this website!
+### Change Projects
+Edit the `projects` array in `app.jsx` to add or modify your own projects.
 
-<a href="https://www.buymeacoffee.com/soumyajit4419" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="Buy Me A Coffee" height= "60px" width= "217px" ></a>
+### Update Colors
+Modify the CSS custom properties in `styles.css` under `:root` to change the color scheme.
+
+### Change Cat Emoji
+In `app.jsx`, look for the cat cursor component and replace the emoji:
+```jsx
+😺  // Change this to your favorite emoji!
+```
+
+## Deployment
+
+### GitHub Pages
+1. Push this repo to your GitHub account
+2. Go to Settings → Pages
+3. Select `main` branch as source
+4. Your site will be live at `https://sudo-apt-install-tap.github.io/portfolio/`
+
+### Vercel/Netlify
+1. Connect your GitHub repo
+2. Set build command to: (leave empty, it's static)
+3. Deploy!
+
+## License
+
+MIT - Feel free to use this as a template for your own portfolio!
+
+## Author
+
+**sudo-apt-install-tap** - Hardware Enthusiast & Developer
+
+- GitHub: [@sudo-apt-install-tap](https://github.com/sudo-apt-install-tap)
+- Portfolio: [Your deployed URL]
+
+---
+
+Made with 💜 and Catppuccin Macchiato
