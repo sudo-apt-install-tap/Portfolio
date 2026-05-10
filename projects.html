@@ -104,16 +104,54 @@
           transform: translateY(-3px);
         }
 
+        /* About Section */
+        .about {
+          padding: 80px 50px;
+          background: linear-gradient(135deg, var(--ctp-base) 0%, var(--ctp-mantle) 100%);
+          text-align: center;
+        }
+
+        .about h1 {
+          font-size: 48px;
+          margin-bottom: 30px;
+          color: var(--ctp-mauve);
+          animation: fadeInDown 1s ease-out;
+        }
+
+        .about-content {
+          max-width: 800px;
+          margin: 0 auto;
+          animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .about-content p {
+          font-size: 18px;
+          color: var(--ctp-text);
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .hackclub-badge {
+          display: inline-block;
+          padding: 12px 24px;
+          background: linear-gradient(135deg, var(--ctp-mauve), var(--ctp-pink));
+          color: var(--ctp-base);
+          border-radius: 50px;
+          font-weight: bold;
+          margin: 20px 0;
+          box-shadow: 0 4px 15px rgba(197, 160, 246, 0.3);
+          animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
         /* Projects Section */
         .projects-section {
-          padding: 60px 50px;
-          min-height: 100vh;
+          padding: 80px 50px;
           background: var(--ctp-mantle);
         }
 
-        .projects-section h1 {
+        .projects-section h2 {
           text-align: center;
-          font-size: 56px;
+          font-size: 48px;
           margin-bottom: 60px;
           color: var(--ctp-mauve);
           animation: fadeInDown 1s ease-out;
@@ -136,6 +174,7 @@
           border: 2px solid var(--ctp-surface2);
           cursor: pointer;
           animation: fadeInUp 0.8s ease-out both;
+          position: relative;
         }
 
         .project-card-large:nth-child(1) { animation-delay: 0.1s; }
@@ -149,6 +188,23 @@
           transform: translateY(-15px);
           box-shadow: 0 15px 50px rgba(197, 160, 246, 0.3);
           border-color: var(--ctp-mauve);
+        }
+
+        .project-number-tag {
+          position: absolute;
+          top: -15px;
+          right: 20px;
+          width: 45px;
+          height: 45px;
+          background: var(--ctp-red);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          color: white;
+          font-size: 20px;
+          box-shadow: 0 4px 15px rgba(237, 135, 150, 0.4);
         }
 
         .project-header {
@@ -264,18 +320,6 @@
           transform: scale(1.05);
         }
 
-        .project-btn-secondary {
-          background: var(--ctp-surface1);
-          color: var(--ctp-text);
-          border: 2px solid var(--ctp-mauve);
-        }
-
-        .project-btn-secondary:hover {
-          background: var(--ctp-surface2);
-          border-color: var(--ctp-pink);
-          color: var(--ctp-pink);
-        }
-
         /* Footer */
         footer {
           background: var(--ctp-crust);
@@ -283,6 +327,11 @@
           padding: 40px 20px;
           color: var(--ctp-subtext1);
           border-top: 2px solid var(--ctp-surface0);
+        }
+
+        footer h3 {
+          color: var(--ctp-mauve);
+          margin-bottom: 20px;
         }
 
         footer a {
@@ -330,11 +379,19 @@
             gap: 15px;
           }
 
-          .projects-section {
-            padding: 30px 20px;
+          .about {
+            padding: 40px 20px;
           }
 
-          .projects-section h1 {
+          .about h1 {
+            font-size: 36px;
+          }
+
+          .projects-section {
+            padding: 40px 20px;
+          }
+
+          .projects-section h2 {
             font-size: 36px;
           }
 
@@ -364,22 +421,41 @@
         <div class="logo" onclick="window.location.href='/'">~$ tap</div>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/#contact">Contact</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
+    <section class="about">
+        <h1>About Me 👨‍💻</h1>
+        <div class="about-content">
+            <p>
+                Hey! I'm <strong>sudo-apt-install-tap</strong>, a passionate hardware enthusiast and developer based in Kolkata. 
+                I love building custom keyboards, microcontrollers, and exploring the fascinating intersection of electronics and software.
+            </p>
+            <p>
+                I'm deeply involved in the maker community and am a proud member of <strong>Hack Club</strong>, 
+                where I collaborate with fellow hackers and builders to create innovative projects and push the boundaries of what's possible.
+            </p>
+            <p>
+                Whether it's designing ergonomic keyboards, prototyping embedded systems, or organizing community events, 
+                I'm always excited to learn, build, and share knowledge with others in the tech ecosystem.
+            </p>
+            <div class="hackclub-badge">🎓 Hack Clubber</div>
+        </div>
+    </section>
+
     <section class="projects-section">
-        <h1>📦 Featured Projects</h1>
+        <h2>📦 Featured Projects</h2>
         <div class="projects-container" id="projects-container"></div>
     </section>
 
-    <footer>
-        <h3 style="margin-bottom: 20px;">Get in Touch</h3>
+    <footer id="contact">
+        <h3>Get in Touch</h3>
         <div>
             <a href="https://github.com/sudo-apt-install-tap" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="mailto:your-email@example.com">Email</a>
+            <a href="mailto:work.tapishnud@gmail.com">Email</a>
+            <a href="slack://user?team=T0G9QKB9G&user=tap" target="_blank" rel="noopener noreferrer">Slack (@tap)</a>
         </div>
         <p style="margin-top: 30px;">© 2026 sudo-apt-install-tap. Built with React & Catppuccin Macchiato 💜</p>
     </footer>
@@ -407,7 +483,8 @@
                 ],
                 tech: ['Python', 'Microcontroller', 'Hardware'],
                 repo: 'https://github.com/sudo-apt-install-tap/Taps-Macropad-V3',
-                status: 'Active'
+                status: 'Active',
+                tag: 1
             },
             {
                 title: 'TaoTeChing',
@@ -422,7 +499,8 @@
                 ],
                 tech: ['Python', 'Hardware Design', 'PCB'],
                 repo: 'https://github.com/sudo-apt-install-tap/TaoTeChing',
-                status: 'Active'
+                status: 'Active',
+                tag: 2
             },
             {
                 title: 'ByteVile',
@@ -437,7 +515,8 @@
                 ],
                 tech: ['Python', 'CLI', 'System'],
                 repo: 'https://github.com/sudo-apt-install-tap/ByteVile-Alpha-Dev-Version-1.1',
-                status: 'Development'
+                status: 'Development',
+                tag: 3
             },
             {
                 title: 'RPForged',
@@ -452,7 +531,8 @@
                 ],
                 tech: ['Hardware', 'Electronics', 'Embedded'],
                 repo: 'https://github.com/sudo-apt-install-tap/RPForged',
-                status: 'Completed'
+                status: 'Completed',
+                tag: 4
             },
             {
                 title: 'BuildGuildKolkata',
@@ -467,7 +547,8 @@
                 ],
                 tech: ['Web', 'Community', 'CSS'],
                 repo: 'https://github.com/sudo-apt-install-tap/BuildGuildKolkata',
-                status: 'Active'
+                status: 'Active',
+                tag: 5
             },
             {
                 title: 'MUSE',
@@ -482,7 +563,8 @@
                 ],
                 tech: ['Audio', 'Hardware', 'Python'],
                 repo: 'https://github.com/sudo-apt-install-tap/MUSE',
-                status: 'Active'
+                status: 'Active',
+                tag: 6
             }
         ];
 
@@ -497,6 +579,7 @@
             const featuresHTML = project.features.map(f => `<li>${f}</li>`).join('');
             
             card.innerHTML = `
+                <div class="project-number-tag">${project.tag}</div>
                 <div class="project-header">
                     <h2>${project.title}</h2>
                     <p>${project.tagline}</p>
