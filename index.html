@@ -4,13 +4,402 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - sudo-apt-install-tap</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Catppuccin Macchiato Color Scheme */
+        :root {
+          --ctp-rosewater: #f4dbd6;
+          --ctp-flamingo: #f0c6c6;
+          --ctp-pink: #f5bde6;
+          --ctp-mauve: #c6a0f6;
+          --ctp-red: #ed8796;
+          --ctp-maroon: #ee99a0;
+          --ctp-peach: #f5a97f;
+          --ctp-yellow: #eed49f;
+          --ctp-green: #a6da95;
+          --ctp-teal: #8bd5ca;
+          --ctp-sky: #91d7e3;
+          --ctp-sapphire: #7dc4e4;
+          --ctp-blue: #8aadf4;
+          --ctp-lavender: #b7bdf8;
+          --ctp-text: #cad1f5;
+          --ctp-subtext1: #b8c5e9;
+          --ctp-subtext0: #a5adce;
+          --ctp-overlay2: #939ab7;
+          --ctp-overlay1: #8087a2;
+          --ctp-overlay0: #6e738d;
+          --ctp-surface2: #5b6078;
+          --ctp-surface1: #494d64;
+          --ctp-surface0: #3e4255;
+          --ctp-base: #24273a;
+          --ctp-mantle: #1e2030;
+          --ctp-crust: #181926;
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, var(--ctp-base) 0%, var(--ctp-mantle) 100%);
+          color: var(--ctp-text);
+          overflow-x: hidden;
+          cursor: none;
+          min-height: 100vh;
+        }
+
+        /* Cat Cursor */
+        .cat-cursor {
+          position: fixed;
+          pointer-events: none;
+          font-size: 30px;
+          z-index: 9999;
+          transform: translate(-50%, -50%);
+          animation: bounce 0.6s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0) translate(-50%, -50%); }
+          50% { transform: translateY(-10px) translate(-50%, -50%); }
+        }
+
+        /* Navbar */
+        nav {
+          background: var(--ctp-surface0);
+          padding: 20px 50px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+          border-bottom: 2px solid var(--ctp-mauve);
+        }
+
+        nav .logo {
+          font-size: 24px;
+          font-weight: bold;
+          color: var(--ctp-mauve);
+          cursor: pointer;
+        }
+
+        nav ul {
+          list-style: none;
+          display: flex;
+          gap: 30px;
+        }
+
+        nav a {
+          color: var(--ctp-text);
+          text-decoration: none;
+          transition: all 0.3s ease;
+          font-weight: 500;
+        }
+
+        nav a:hover {
+          color: var(--ctp-mauve);
+          transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 50px 20px;
+          background: linear-gradient(135deg, var(--ctp-base) 0%, var(--ctp-mantle) 100%);
+        }
+
+        .hero-content h1 {
+          font-size: 64px;
+          margin-bottom: 20px;
+          background: linear-gradient(135deg, var(--ctp-mauve), var(--ctp-pink), var(--ctp-blue));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+          font-size: 20px;
+          color: var(--ctp-subtext1);
+          margin-bottom: 30px;
+          animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+          display: inline-block;
+          padding: 15px 40px;
+          background: var(--ctp-mauve);
+          color: var(--ctp-base);
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: bold;
+          transition: all 0.3s ease;
+          margin: 10px;
+          cursor: pointer;
+          border: none;
+          font-size: 16px;
+          animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+          background: var(--ctp-pink);
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(197, 160, 246, 0.4);
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Projects Section */
+        .projects {
+          padding: 100px 50px;
+          background: var(--ctp-mantle);
+        }
+
+        .projects h2 {
+          text-align: center;
+          font-size: 48px;
+          margin-bottom: 60px;
+          color: var(--ctp-mauve);
+        }
+
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 40px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .project-card {
+          background: var(--ctp-surface0);
+          padding: 30px;
+          border-radius: 15px;
+          border-left: 4px solid var(--ctp-mauve);
+          transition: all 0.3s ease;
+          cursor: pointer;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card:hover {
+          transform: translateY(-10px);
+          border-left: 4px solid var(--ctp-pink);
+          box-shadow: 0 10px 40px rgba(197, 160, 246, 0.2);
+        }
+
+        .project-card h3 {
+          color: var(--ctp-mauve);
+          margin-bottom: 15px;
+          font-size: 22px;
+        }
+
+        .project-card p {
+          color: var(--ctp-subtext1);
+          margin-bottom: 20px;
+          line-height: 1.6;
+        }
+
+        .project-links {
+          display: flex;
+          gap: 15px;
+        }
+
+        .project-link {
+          padding: 8px 16px;
+          background: var(--ctp-mauve);
+          color: var(--ctp-base);
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 14px;
+          font-weight: bold;
+          transition: all 0.3s ease;
+          display: inline-block;
+        }
+
+        .project-link:hover {
+          background: var(--ctp-pink);
+          transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+          background: var(--ctp-crust);
+          text-align: center;
+          padding: 40px 20px;
+          color: var(--ctp-subtext1);
+          border-top: 2px solid var(--ctp-surface0);
+        }
+
+        footer a {
+          color: var(--ctp-mauve);
+          text-decoration: none;
+          margin: 0 15px;
+          transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+          color: var(--ctp-pink);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          nav {
+            padding: 15px 20px;
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          nav ul {
+            gap: 15px;
+          }
+
+          .hero-content h1 {
+            font-size: 36px;
+          }
+
+          .projects {
+            padding: 50px 20px;
+          }
+
+          .projects h2 {
+            font-size: 36px;
+          }
+
+          .projects-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+    </style>
 </head>
 <body>
-    <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
-    <script type="text/babel" src="app.jsx"></script>
+    <div id="cat-cursor" class="cat-cursor">😺</div>
+
+    <nav>
+        <div class="logo">~$ tap</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>sudo-apt-install-tap</h1>
+            <p>Hardware Enthusiast & Developer</p>
+            <p style="font-size: 16px; color: #b8c5e9; margin-bottom: 40px;">
+                Building keyboards, electronics, and cool stuff 🚀
+            </p>
+            <button class="cta-button" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">Explore My Work</button>
+            <button class="cta-button" style="background: #ed8796;" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get in Touch</button>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid" id="projects-grid"></div>
+    </section>
+
+    <footer id="contact">
+        <h3 style="margin-bottom: 20px;">Get in Touch</h3>
+        <div>
+            <a href="https://github.com/sudo-apt-install-tap" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="mailto:your-email@example.com">Email</a>
+        </div>
+        <p style="margin-top: 30px;">© 2026 sudo-apt-install-tap. Built with React & Catppuccin Macchiato 💜</p>
+    </footer>
+
+    <script>
+        // Cat Cursor Animation
+        const catCursor = document.getElementById('cat-cursor');
+        document.addEventListener('mousemove', (e) => {
+            catCursor.style.left = e.clientX + 'px';
+            catCursor.style.top = e.clientY + 'px';
+        });
+
+        // Projects Data
+        const projects = [
+            {
+                title: 'Taps-Macropad-V3',
+                description: 'Advanced macropad with customizable keys and RGB lighting',
+                repo: 'https://github.com/sudo-apt-install-tap/Taps-Macropad-V3',
+                language: 'Python'
+            },
+            {
+                title: 'TaoTeChing',
+                description: 'An open-source split keyboard made for ergonomics with minimalist design',
+                repo: 'https://github.com/sudo-apt-install-tap/TaoTeChing',
+                language: 'Python'
+            },
+            {
+                title: 'ByteVile',
+                description: 'Development version with advanced features and optimizations',
+                repo: 'https://github.com/sudo-apt-install-tap/ByteVile-Alpha-Dev-Version-1.1',
+                language: 'Python'
+            },
+            {
+                title: 'RPForged',
+                description: 'A simple microcontroller with the RP2040 chip',
+                repo: 'https://github.com/sudo-apt-install-tap/RPForged',
+                language: 'Hardware'
+            },
+            {
+                title: 'BuildGuildKolkata',
+                description: 'Community project for builders and makers in Kolkata',
+                repo: 'https://github.com/sudo-apt-install-tap/BuildGuildKolkata',
+                language: 'CSS'
+            },
+            {
+                title: 'MUSE',
+                description: 'Creative project combining music and electronics',
+                repo: 'https://github.com/sudo-apt-install-tap/MUSE',
+                language: 'Multi'
+            }
+        ];
+
+        // Render Projects
+        const projectsGrid = document.getElementById('projects-grid');
+        projects.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <div style="margin-bottom: 15px;">
+                    <span style="
+                        display: inline-block;
+                        padding: 5px 10px;
+                        background: #c6a0f6;
+                        color: #24273a;
+                        border-radius: 3px;
+                        font-size: 12px;
+                        font-weight: bold;
+                    ">${project.language}</span>
+                </div>
+                <div class="project-links">
+                    <a href="${project.repo}" target="_blank" rel="noopener noreferrer" class="project-link">
+                        View on GitHub
+                    </a>
+                </div>
+            `;
+            projectsGrid.appendChild(card);
+        });
+    </script>
 </body>
 </html>
