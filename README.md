@@ -12,7 +12,7 @@
 
 📱 **Responsive Design** - Looks great on desktop and mobile
 
-🚀 **Featured Projects** - Showcase your best work including:
+🚀 **Featured Projects** - Showcase my best work including:
   - Taps-Macropad-V3
   - TaoTeChing
   - ByteVile
