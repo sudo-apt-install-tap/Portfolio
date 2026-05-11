@@ -1,0 +1,185 @@
+:root {
+  /* Catppuccin-inspired Pastel Dark palette (black/gray/purple/sky-blue) */
+  --cp-bg: #0b0d11;          /* near-black background */
+  --cp-surface: #0f1720;     /* dark surface (cards, panels) */
+  --cp-muted-surface: #141821;/* slightly lighter surface */
+  --cp-border: #202731;      /* subtle borders */
+  --cp-overlay: rgba(255,255,255,0.03);
+
+  --cp-text: #e6e9ef;        /* main text (soft white) */
+  --cp-subtext: #b9c0d8;     /* muted text */
+  --cp-muted: #8f98b3;       /* secondary muted */
+
+  --cp-purple: #cba6f7;      /* pastel purple (primary accent) */
+  --cp-purple-500: #a58ce6;  /* darker purple for hover states */
+  --cp-sky: #89dce7;         /* light sky-blue accent (links, highlights) */
+  --cp-sky-600: #5dc7db;     /* deeper sky for interactions */
+
+  --cp-success: #a6e3a1;
+  --cp-warning: #f9e2af;
+  --cp-danger:  #f38ba8;
+
+  --cp-shadow: 0 6px 18px rgba(3,6,12,0.6);
+
+  /* component sizes */
+  --cp-radius: 10px;
+  --cp-radius-sm: 6px;
+  --cp-gap: 1rem;
+  --cp-transition: 180ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Scoped theme (use data-theme="catppuccin-pastel-dark" on <html> or <body>) */
+[data-theme="catppuccin-pastel-dark"] {
+  background: linear-gradient(180deg, var(--cp-bg) 0%, #0f1116 100%);
+  color: var(--cp-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base elements */
+[data-theme="catppuccin-pastel-dark"] body {
+  background-color: var(--cp-bg);
+  color: var(--cp-text);
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Links */
+[data-theme="catppuccin-pastel-dark"] a {
+  color: var(--cp-sky);
+  text-decoration: none;
+  transition: color var(--cp-transition);
+}
+[data-theme="catppuccin-pastel-dark"] a:hover,
+[data-theme="catppuccin-pastel-dark"] a:focus {
+  color: var(--cp-sky-600);
+  text-decoration: underline;
+}
+
+/* Buttons */
+[data-theme="catppuccin-pastel-dark"] .btn {
+  background: linear-gradient(180deg, rgba(203,166,247,0.18), rgba(165,140,230,0.08));
+  border: 1px solid rgba(203,166,247,0.18);
+  color: var(--cp-text);
+  padding: .55rem 1rem;
+  border-radius: var(--cp-radius-sm);
+  cursor: pointer;
+  transition: transform var(--cp-transition), box-shadow var(--cp-transition);
+  box-shadow: 0 4px 14px rgba(9, 8, 15, 0.45);
+}
+[data-theme="catppuccin-pastel-dark"] .btn--primary {
+  background: linear-gradient(180deg, var(--cp-purple), var(--cp-purple-500));
+  color: #0b0d11;
+  border: none;
+}
+[data-theme="catppuccin-pastel-dark"] .btn:hover { transform: translateY(-2px); }
+[data-theme="catppuccin-pastel-dark"] .btn:active { transform: translateY(0); }
+
+/* Secondary / ghost button using sky accent */
+[data-theme="catppuccin-pastel-dark"] .btn--ghost {
+  background: transparent;
+  color: var(--cp-sky);
+  border: 1px solid rgba(137,220,231,0.12);
+}
+
+/* Cards / panels */
+[data-theme="catppuccin-pastel-dark"] .card {
+  background: linear-gradient(180deg, var(--cp-surface), var(--cp-muted-surface));
+  border-radius: var(--cp-radius);
+  padding: 1rem;
+  border: 1px solid var(--cp-border);
+  box-shadow: var(--cp-shadow);
+}
+
+/* Navbar / header */
+[data-theme="catppuccin-pastel-dark"] .navbar {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+}
+
+/* Inputs */
+[data-theme="catppuccin-pastel-dark"] input,
+[data-theme="catppuccin-pastel-dark"] textarea,
+[data-theme="catppuccin-pastel-dark"] select {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--cp-text);
+  padding: .5rem .75rem;
+  border-radius: var(--cp-radius-sm);
+  outline: none;
+  transition: box-shadow var(--cp-transition), border-color var(--cp-transition);
+}
+[data-theme="catppuccin-pastel-dark"] input:focus,
+[data-theme="catppuccin-pastel-dark"] textarea:focus {
+  box-shadow: 0 6px 18px rgba(137,220,231,0.06);
+  border-color: var(--cp-sky-600);
+}
+
+/* Code blocks & pre */
+[data-theme="catppuccin-pastel-dark"] pre,
+[data-theme="catppuccin-pastel-dark"] code {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--cp-text);
+  border-radius: 8px;
+  padding: .6rem .8rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  overflow: auto;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Badges / labels */
+[data-theme="catppuccin-pastel-dark"] .badge {
+  background: rgba(203,166,247,0.12);
+  color: var(--cp-purple);
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  border: 1px solid rgba(203,166,247,0.06);
+}
+
+/* Small accent underline / highlight */
+[data-theme="catppuccin-pastel-dark"] .accent-highlight {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--cp-sky), var(--cp-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Tables */
+[data-theme="catppuccin-pastel-dark"] table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--cp-text);
+}
+[data-theme="catppuccin-pastel-dark"] table th,
+[data-theme="catppuccin-pastel-dark"] table td {
+  padding: .6rem .8rem;
+  border-bottom: 1px dashed rgba(255,255,255,0.03);
+}
+
+/* small utilities */
+[data-theme="catppuccin-pastel-dark"] .muted { color: var(--cp-subtext); }
+[data-theme="catppuccin-pastel-dark"] .glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+}
+
+/* Focus ring (accessible) */
+[data-theme="catppuccin-pastel-dark"] :focus {
+  outline: 3px solid rgba(137,220,231,0.12);
+  outline-offset: 2px;
+}
+
+/* Helpers for darkening or lightening UI surfaces */
+[data-theme="catppuccin-pastel-dark"] .elev-1 { box-shadow: 0 6px 18px rgba(3,6,12,0.45); }
+[data-theme="catppuccin-pastel-dark"] .elev-2 { box-shadow: 0 22px 44px rgba(3,6,12,0.6); }
+
+/* Example gradient accent background you can use for hero sections */
+[data-theme="catppuccin-pastel-dark"] .hero {
+  background: linear-gradient(135deg, rgba(72,46,134,0.25), rgba(137,220,231,0.06));
+  border-radius: 14px;
+  padding: 2rem;
+}
