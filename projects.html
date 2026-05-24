@@ -4,177 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - sudo-apt-install-tap</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Catppuccin Macchiato Color Scheme */
-        :root {
-          --ctp-rosewater: #f4dbd6;
-          --ctp-flamingo: #f0c6c6;
-          --ctp-pink: #f5bde6;
-          --ctp-mauve: #c6a0f6;
-          --ctp-red: #ed8796;
-          --ctp-maroon: #ee99a0;
-          --ctp-peach: #f5a97f;
-          --ctp-yellow: #eed49f;
-          --ctp-green: #a6da95;
-          --ctp-teal: #8bd5ca;
-          --ctp-sky: #91d7e3;
-          --ctp-sapphire: #7dc4e4;
-          --ctp-blue: #8aadf4;
-          --ctp-lavender: #b7bdf8;
-          --ctp-text: #cad1f5;
-          --ctp-subtext1: #b8c5e9;
-          --ctp-subtext0: #a5adce;
-          --ctp-overlay2: #939ab7;
-          --ctp-overlay1: #8087a2;
-          --ctp-overlay0: #6e738d;
-          --ctp-surface2: #5b6078;
-          --ctp-surface1: #494d64;
-          --ctp-surface0: #3e4255;
-          --ctp-base: #24273a;
-          --ctp-mantle: #1e2030;
-          --ctp-crust: #181926;
-        }
-
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          background: linear-gradient(135deg, var(--ctp-base) 0%, var(--ctp-mantle) 100%);
-          color: var(--ctp-text);
-          overflow-x: hidden;
-          cursor: none;
-          min-height: 100vh;
-        }
-
-        /* Cat Cursor */
-        .cat-cursor {
-          position: fixed;
-          pointer-events: none;
-          font-size: 30px;
-          z-index: 9999;
-          transform: translate(-50%, -50%);
-          animation: bounce 0.6s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0) translate(-50%, -50%); }
-          50% { transform: translateY(-10px) translate(-50%, -50%); }
-        }
-
-        /* Navbar */
-        nav {
-          background: var(--ctp-surface0);
-          padding: 20px 50px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          position: sticky;
-          top: 0;
-          z-index: 100;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-          border-bottom: 2px solid var(--ctp-mauve);
-        }
-
-        nav .logo {
-          font-size: 24px;
-          font-weight: bold;
-          color: var(--ctp-mauve);
-          cursor: pointer;
-        }
-
-        nav ul {
-          list-style: none;
-          display: flex;
-          gap: 30px;
-        }
-
-        nav a {
-          color: var(--ctp-text);
-          text-decoration: none;
-          transition: all 0.3s ease;
-          font-weight: 500;
-        }
-
-        nav a:hover {
-          color: var(--ctp-mauve);
-          transform: translateY(-3px);
-        }
-
-        /* About Section */
-        .about {
-          padding: 80px 50px;
-          background: linear-gradient(135deg, var(--ctp-base) 0%, var(--ctp-mantle) 100%);
-          text-align: center;
-        }
-
-        .about h1 {
-          font-size: 48px;
-          margin-bottom: 30px;
-          color: var(--ctp-mauve);
-          animation: fadeInDown 1s ease-out;
-        }
-
-        .about-content {
-          max-width: 800px;
-          margin: 0 auto;
-          animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .about-content p {
-          font-size: 18px;
-          color: var(--ctp-text);
-          line-height: 1.8;
-          margin-bottom: 20px;
-        }
-
-        .hackclub-badge {
-          display: inline-block;
-          padding: 12px 24px;
-          background: linear-gradient(135deg, var(--ctp-mauve), var(--ctp-pink));
-          color: var(--ctp-base);
-          border-radius: 50px;
-          font-weight: bold;
-          margin: 20px 0;
-          box-shadow: 0 4px 15px rgba(197, 160, 246, 0.3);
-          animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        /* Projects Section */
+        /* Projects Page Specific Styles */
         .projects-section {
-          padding: 80px 50px;
-          background: var(--ctp-mantle);
+            padding: 80px 50px;
+            background: var(--ctp-mantle);
         }
 
         .projects-section h2 {
-          text-align: center;
-          font-size: 48px;
-          margin-bottom: 60px;
-          color: var(--ctp-mauve);
-          animation: fadeInDown 1s ease-out;
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+            color: var(--ctp-mauve);
+            animation: fadeInDown 1s ease-out;
         }
 
         .projects-container {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 40px;
-          max-width: 1400px;
-          margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .project-card-large {
-          background: linear-gradient(135deg, var(--ctp-surface0), var(--ctp-surface1));
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-          transition: all 0.4s ease;
-          border: 2px solid var(--ctp-surface2);
-          cursor: pointer;
-          animation: fadeInUp 0.8s ease-out both;
-          position: relative;
+            background: linear-gradient(135deg, var(--ctp-surface0), var(--ctp-surface1));
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            border: 2px solid var(--ctp-surface2);
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out both;
         }
 
         .project-card-large:nth-child(1) { animation-delay: 0.1s; }
@@ -185,232 +47,206 @@
         .project-card-large:nth-child(6) { animation-delay: 0.6s; }
 
         .project-card-large:hover {
-          transform: translateY(-15px);
-          box-shadow: 0 15px 50px rgba(197, 160, 246, 0.3);
-          border-color: var(--ctp-mauve);
-        }
-
-        .project-number-tag {
-          position: absolute;
-          top: -15px;
-          right: 20px;
-          width: 45px;
-          height: 45px;
-          background: var(--ctp-red);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: bold;
-          color: white;
-          font-size: 20px;
-          box-shadow: 0 4px 15px rgba(237, 135, 150, 0.4);
+            transform: translateY(-15px);
+            box-shadow: 0 15px 50px rgba(197, 160, 246, 0.3);
+            border-color: var(--ctp-mauve);
         }
 
         .project-header {
-          padding: 30px;
-          background: linear-gradient(135deg, var(--ctp-mauve), var(--ctp-pink));
-          min-height: 150px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--ctp-mauve), var(--ctp-pink));
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .project-header h2 {
-          color: var(--ctp-base);
-          font-size: 28px;
-          margin-bottom: 10px;
+            color: var(--ctp-base);
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         .project-header p {
-          color: rgba(36, 39, 58, 0.8);
-          font-size: 14px;
+            color: rgba(36, 39, 58, 0.8);
+            font-size: 14px;
         }
 
         .project-content {
-          padding: 30px;
+            padding: 30px;
         }
 
         .project-content p {
-          color: var(--ctp-text);
-          line-height: 1.8;
-          margin-bottom: 20px;
-          font-size: 15px;
+            color: var(--ctp-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
 
         .project-features {
-          margin: 20px 0;
-          padding: 15px 0;
-          border-top: 1px solid var(--ctp-surface2);
-          border-bottom: 1px solid var(--ctp-surface2);
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid var(--ctp-surface2);
+            border-bottom: 1px solid var(--ctp-surface2);
         }
 
         .project-features h4 {
-          color: var(--ctp-mauve);
-          margin-bottom: 12px;
-          font-size: 14px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
+            color: var(--ctp-mauve);
+            margin-bottom: 12px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .feature-list {
-          list-style: none;
-          padding-left: 0;
+            list-style: none;
+            padding-left: 0;
         }
 
         .feature-list li {
-          color: var(--ctp-subtext1);
-          padding: 6px 0;
-          font-size: 14px;
-          padding-left: 20px;
-          position: relative;
+            color: var(--ctp-subtext1);
+            padding: 6px 0;
+            font-size: 14px;
+            padding-left: 20px;
+            position: relative;
         }
 
         .feature-list li:before {
-          content: "→";
-          position: absolute;
-          left: 0;
-          color: var(--ctp-mauve);
-          font-weight: bold;
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--ctp-mauve);
+            font-weight: bold;
         }
 
         .project-tech {
-          margin-top: 20px;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .tech-tag {
-          display: inline-block;
-          padding: 6px 12px;
-          background: var(--ctp-surface2);
-          color: var(--ctp-mauve);
-          border-radius: 20px;
-          font-size: 12px;
-          font-weight: bold;
-          border: 1px solid var(--ctp-mauve);
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--ctp-surface2);
+            color: var(--ctp-mauve);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid var(--ctp-mauve);
         }
 
         .project-links {
-          display: flex;
-          gap: 12px;
-          margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .project-btn {
-          flex: 1;
-          padding: 12px 20px;
-          background: var(--ctp-mauve);
-          color: var(--ctp-base);
-          text-decoration: none;
-          border-radius: 8px;
-          font-weight: bold;
-          text-align: center;
-          transition: all 0.3s ease;
-          border: none;
-          cursor: pointer;
-          font-size: 14px;
+            flex: 1;
+            padding: 12px 20px;
+            background: var(--ctp-mauve);
+            color: var(--ctp-base);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
         }
 
         .project-btn:hover {
-          background: var(--ctp-pink);
-          transform: scale(1.05);
+            background: var(--ctp-pink);
+            transform: scale(1.05);
         }
 
-        /* Footer */
-        footer {
-          background: var(--ctp-crust);
-          text-align: center;
-          padding: 40px 20px;
-          color: var(--ctp-subtext1);
-          border-top: 2px solid var(--ctp-surface0);
+        .about {
+            padding: 80px 50px;
+            background: linear-gradient(135deg, var(--ctp-base) 0%, var(--ctp-mantle) 100%);
+            text-align: center;
         }
 
-        footer h3 {
-          color: var(--ctp-mauve);
-          margin-bottom: 20px;
+        .about h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: var(--ctp-mauve);
+            animation: fadeInDown 1s ease-out;
         }
 
-        footer a {
-          color: var(--ctp-mauve);
-          text-decoration: none;
-          margin: 0 15px;
-          transition: all 0.3s ease;
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
-        footer a:hover {
-          color: var(--ctp-pink);
+        .about-content p {
+            font-size: 18px;
+            color: var(--ctp-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .hackclub-badge {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--ctp-mauve), var(--ctp-pink));
+            color: var(--ctp-base);
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(197, 160, 246, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         @keyframes fadeInDown {
-          from {
-            opacity: 0;
-            transform: translateY(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-          nav {
-            padding: 15px 20px;
-            flex-direction: column;
-            gap: 15px;
-          }
+            .projects-section {
+                padding: 40px 20px;
+            }
 
-          nav ul {
-            gap: 15px;
-          }
+            .projects-section h2 {
+                font-size: 36px;
+            }
 
-          .about {
-            padding: 40px 20px;
-          }
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
 
-          .about h1 {
-            font-size: 36px;
-          }
+            .about {
+                padding: 40px 20px;
+            }
 
-          .projects-section {
-            padding: 40px 20px;
-          }
+            .about h1 {
+                font-size: 36px;
+            }
 
-          .projects-section h2 {
-            font-size: 36px;
-          }
+            .project-header {
+                min-height: 120px;
+                padding: 20px;
+            }
 
-          .projects-container {
-            grid-template-columns: 1fr;
-          }
+            .project-header h2 {
+                font-size: 22px;
+            }
 
-          .project-header {
-            min-height: 120px;
-            padding: 20px;
-          }
-
-          .project-header h2 {
-            font-size: 22px;
-          }
-
-          .project-content {
-            padding: 20px;
-          }
+            .project-content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -422,7 +258,8 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/#journals">Journals</a></li>
+            <li><a href="/#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -457,7 +294,7 @@
             <a href="mailto:work.tapishnud@gmail.com">Email</a>
             <a href="slack://user?team=T0G9QKB9G&user=tap" target="_blank" rel="noopener noreferrer">Slack (@tap)</a>
         </div>
-        <p style="margin-top: 30px;">© 2026 sudo-apt-install-tap. Built with React & Catppuccin Macchiato 💜</p>
+        <p style="margin-top: 30px;">© 2026 sudo-apt-install-tap. Built with vanilla HTML/CSS/JS & Catppuccin Macchiato 💜</p>
     </footer>
 
     <script>
@@ -473,7 +310,7 @@
             {
                 title: 'Taps-Macropad-V3',
                 tagline: 'Advanced Macro Input Device',
-                description: 'A next-generation programmable macropad with support for custom key mappings, macro recording, and dynamic lighting effects. Perfect for productivity, gaming, and creative workflows.',
+                description: 'A next-generation programmable macropad with support for custom key mappings, macro recording, and dynamic lighting effects. Perfect for productivity, gaming, and creative work.',
                 features: [
                     'Customizable key layouts',
                     'RGB LED lighting',
@@ -483,8 +320,7 @@
                 ],
                 tech: ['Python', 'Microcontroller', 'Hardware'],
                 repo: 'https://github.com/sudo-apt-install-tap/Taps-Macropad-V3',
-                status: 'Active',
-                tag: 1
+                status: 'Active'
             },
             {
                 title: 'TaoTeChing',
@@ -499,8 +335,7 @@
                 ],
                 tech: ['Python', 'Hardware Design', 'PCB'],
                 repo: 'https://github.com/sudo-apt-install-tap/TaoTeChing',
-                status: 'Active',
-                tag: 2
+                status: 'Active'
             },
             {
                 title: 'ByteVile',
@@ -515,8 +350,7 @@
                 ],
                 tech: ['Python', 'CLI', 'System'],
                 repo: 'https://github.com/sudo-apt-install-tap/ByteVile-Alpha-Dev-Version-1.1',
-                status: 'Development',
-                tag: 3
+                status: 'Development'
             },
             {
                 title: 'RPForged',
@@ -531,13 +365,12 @@
                 ],
                 tech: ['Hardware', 'Electronics', 'Embedded'],
                 repo: 'https://github.com/sudo-apt-install-tap/RPForged',
-                status: 'Completed',
-                tag: 4
+                status: 'Completed'
             },
             {
                 title: 'BuildGuildKolkata',
                 tagline: 'Community Platform',
-                description: 'A vibrant community hub for builders, makers, and electronics enthusiasts in Kolkata. Connecting hobbyists, professionals, and innovators for collaboration and knowledge sharing.',
+                description: 'A vibrant community hub for builders, makers, and electronics enthusiasts in Kolkata. Connecting hobbyists, professionals, and innovators for collaboration.',
                 features: [
                     'Community forum',
                     'Project showcase',
@@ -547,13 +380,12 @@
                 ],
                 tech: ['Web', 'Community', 'CSS'],
                 repo: 'https://github.com/sudo-apt-install-tap/BuildGuildKolkata',
-                status: 'Active',
-                tag: 5
+                status: 'Active'
             },
             {
                 title: 'MUSE',
                 tagline: 'Music & Electronics Fusion',
-                description: 'An innovative creative project that combines music production with electronics and hardware interfaces. Explore the intersection of sound, electronics, and interactive art.',
+                description: 'An innovative creative project that combines music production with electronics and hardware interfaces. Explore the intersection of sound, electronics, and interactivity.',
                 features: [
                     'Hardware music interface',
                     'Real-time synthesis',
@@ -563,8 +395,7 @@
                 ],
                 tech: ['Audio', 'Hardware', 'Python'],
                 repo: 'https://github.com/sudo-apt-install-tap/MUSE',
-                status: 'Active',
-                tag: 6
+                status: 'Active'
             }
         ];
 
@@ -575,11 +406,9 @@
             card.className = 'project-card-large';
             
             const techTagsHTML = project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
-            
             const featuresHTML = project.features.map(f => `<li>${f}</li>`).join('');
             
             card.innerHTML = `
-                <div class="project-number-tag">${project.tag}</div>
                 <div class="project-header">
                     <h2>${project.title}</h2>
                     <p>${project.tagline}</p>
